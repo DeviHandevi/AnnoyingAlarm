@@ -36,27 +36,27 @@ public class MainActivity extends AppCompatActivity {
         buttonAnnoyMe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int hour = timePicker.getCurrentHour();
-                int minute = timePicker.getCurrentMinute();
-                textViewInformation.setText(String.format("Will be annoyed at %s:%s!",
-                        String.format("%2d",hour).replaceAll(" ","0"),
-                        String.format("%2d",minute).replaceAll(" ","0")));
+            int hour = timePicker.getCurrentHour();
+            int minute = timePicker.getCurrentMinute();
+            textViewInformation.setText(String.format("Will be annoyed at %s:%s!",
+                    String.format("%2d",hour).replaceAll(" ","0"),
+                    String.format("%2d",minute).replaceAll(" ","0")));
 
-                Calendar calendarNow = Calendar.getInstance(TimeZone.getDefault());
-                Calendar calendarAlarm = (Calendar) calendarNow.clone();
-                calendarAlarm.set(Calendar.HOUR_OF_DAY, hour);
-                calendarAlarm.set(Calendar.MINUTE, minute);
-                calendarAlarm.set(Calendar.SECOND, 0);
-                calendarAlarm.set(Calendar.MILLISECOND, 0);
+            Calendar calendarNow = Calendar.getInstance(TimeZone.getDefault());
+            Calendar calendarAlarm = (Calendar) calendarNow.clone();
+            calendarAlarm.set(Calendar.HOUR_OF_DAY, hour);
+            calendarAlarm.set(Calendar.MINUTE, minute);
+            calendarAlarm.set(Calendar.SECOND, 0);
+            calendarAlarm.set(Calendar.MILLISECOND, 0);
 
-                if(calendarAlarm.compareTo(calendarNow) <= 0){
-                    calendarAlarm.add(Calendar.DATE, 1);
-                }
+            if(calendarAlarm.compareTo(calendarNow) <= 0){
+                calendarAlarm.add(Calendar.DATE, 1);
+            }
 
-                Intent intent = new Intent(getBaseContext(), AlarmReceiver.class);
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(getBaseContext(), 0, intent, 0);
-                AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
-                alarmManager.set(AlarmManager.RTC_WAKEUP, calendarAlarm.getTimeInMillis(), pendingIntent);
+            Intent intent = new Intent(getBaseContext(), AlarmReceiver.class);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(getBaseContext(), 0, intent, 0);
+            AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+            alarmManager.set(AlarmManager.RTC_WAKEUP, calendarAlarm.getTimeInMillis(), pendingIntent);
             }
         });
     }
