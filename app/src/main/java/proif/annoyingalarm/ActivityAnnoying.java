@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 public class ActivityAnnoying extends AppCompatActivity {
 
+    private AppCompatActivity theActivity;
+
     private Vibrator vibrator;
     private long[] pattern = {0,1000,500};
     //start without a delay, vibrate for 1 sec, sleep for 0.5 sec
@@ -32,6 +34,7 @@ public class ActivityAnnoying extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_annoying);
+        theActivity = this;
 
         Toast.makeText(getApplicationContext(), "Alarm received!", Toast.LENGTH_LONG).show();
 
@@ -60,6 +63,7 @@ public class ActivityAnnoying extends AppCompatActivity {
                 if(clicked==goal) {
                     Toast.makeText(getApplicationContext(), R.string.clicked_success, Toast.LENGTH_SHORT).show();
                     vibrator.cancel();
+                    theActivity.finish();
                 } else {
                     if(clicked<goal) {
                         infoTextView.setText(R.string.clicked_less);
