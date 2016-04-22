@@ -11,8 +11,9 @@ import android.widget.Toast;
 public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        //Toast.makeText(context, "Alarm received!", Toast.LENGTH_LONG).show();
+        Toast.makeText(context, "Alarm received!", Toast.LENGTH_LONG).show();
         Intent annoyingIntent = new Intent(context, ActivityAnnoying.class);
+        annoyingIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(annoyingIntent);
     }
 }

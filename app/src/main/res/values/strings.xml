@@ -13,7 +13,7 @@
     <string name="click_info">Click the button for</string>
     <string name="click_times">times</string>
     <string name="click_done">I\'m done</string>
-    <string name="clicked_info">Not too much, not too few~</string>
+    <string name="clicked_info">Not too much, not too few~\nclick Done if you think you\'ve clicked enough</string>
     <string name="clicked_less">Come on, you\'re too lazy! Click more!</string>
     <string name="clicked_more">Oops, you clicked too many times!</string>
     <string name="clicked_success">You\'ve woken up!</string>

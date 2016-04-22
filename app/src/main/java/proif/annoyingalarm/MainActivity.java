@@ -38,9 +38,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int hour = timePicker.getCurrentHour();
                 int minute = timePicker.getCurrentMinute();
-                textViewInformation.setText(String.format("Will be annoyed at %s:%s!",
-                        String.format("%2d",hour).replaceAll(" ","0"),
-                        String.format("%2d",minute).replaceAll(" ","0")));
 
                 Calendar calendarNow = Calendar.getInstance(TimeZone.getDefault());
                 Calendar calendarAlarm = (Calendar) calendarNow.clone();
@@ -49,12 +46,21 @@ public class MainActivity extends AppCompatActivity {
                 calendarAlarm.set(Calendar.SECOND, 0);
                 calendarAlarm.set(Calendar.MILLISECOND, 0);
 
+                String info = "";
                 if(calendarAlarm.compareTo(calendarNow) <= 0){
                     calendarAlarm.add(Calendar.DATE, 1);
+                    info = "tomorrow ";
                 }
 
-                Intent intent = new Intent(getBaseContext(), AlarmReceiver.class);
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(getBaseContext(), 0, intent, 0);
+                textViewInformation.setText(String.format("Will be annoyed %sat %s:%s!",
+                        info,
+                        String.format("%2d",hour).replaceAll(" ","0"),
+                        String.format("%2d",minute).replaceAll(" ","0")));
+
+                Intent intent = new Intent(getApplicationContext(), AlarmReceiver.class);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, 0);
+                //Intent intent = new Intent(getApplicationContext(), ActivityAnnoying.class);
+                //PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, 0);
                 AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
                 alarmManager.set(AlarmManager.RTC_WAKEUP, calendarAlarm.getTimeInMillis(), pendingIntent);
             }

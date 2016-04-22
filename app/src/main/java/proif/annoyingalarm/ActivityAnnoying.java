@@ -33,9 +33,10 @@ public class ActivityAnnoying extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_annoying);
 
+        Toast.makeText(getApplicationContext(), "Alarm received!", Toast.LENGTH_LONG).show();
+
         vibrator = (Vibrator)getSystemService(getApplicationContext().VIBRATOR_SERVICE);
         vibrator.vibrate(pattern,0);
-        vibrator.cancel();
 
         buttonClick = (Button) findViewById(R.id.buttonClick);
         buttonDone = (Button)findViewById(R.id.buttonDone);
@@ -59,14 +60,15 @@ public class ActivityAnnoying extends AppCompatActivity {
                 if(clicked==goal) {
                     Toast.makeText(getApplicationContext(), R.string.clicked_success, Toast.LENGTH_SHORT).show();
                     vibrator.cancel();
-                } else if(clicked<goal) {
-                    infoTextView.setText(R.string.clicked_less);
-                    goal = (int)(Math.random()*RANGE_CLICK)+MINIMUM_CLICK;
-                    clicked = 0;
                 } else {
-                    infoTextView.setText(R.string.clicked_more);
+                    if(clicked<goal) {
+                        infoTextView.setText(R.string.clicked_less);
+                    } else {
+                        infoTextView.setText(R.string.clicked_more);
+                    }
                     goal = (int)(Math.random()*RANGE_CLICK)+MINIMUM_CLICK;
                     clicked = 0;
+                    textTimes.setText(Integer.toString(goal));
                 }
             }
         });
