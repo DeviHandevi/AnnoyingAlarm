@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">AnnoyingAlarm</string>
+    <string name="title_activity_activity_annoying">ActivityAnnoying</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="alarm_question">When should we annoy you?</string>
+    <string name="alarm_information">Will be annoyed at XX:XX YY</string>
+    <string name="annoy_me">Annoy Me!</string>
+    <string name="wake_up">Wake up!</string>
+    <string name="click_me">Click me!</string>
+    <string name="click_info">Click the button for</string>
+    <string name="click_times">times</string>
+    <string name="click_done">I\'m done</string>
+    <string name="clicked_info">Not too much, not too few~</string>
+    <string name="clicked_less">Come on, you\'re too lazy! Click more!</string>
+    <string name="clicked_more">Oops, you clicked too many times!</string>
+    <string name="clicked_success">You\'ve woken up!</string>
+
 </resources>

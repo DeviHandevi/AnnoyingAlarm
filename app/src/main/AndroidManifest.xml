@@ -3,7 +3,7 @@
     package="proif.annoyingalarm" >
 
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
 
     <application
         android:allowBackup="true"
@@ -19,9 +19,13 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".AlarmReceiver">
+        <receiver android:name=".AlarmReceiver" >
         </receiver>
 
+        <activity
+            android:name=".ActivityAnnoying"
+            android:label="@string/title_activity_activity_annoying" >
+        </activity>
     </application>
 
 </manifest>
